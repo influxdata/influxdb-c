@@ -68,7 +68,7 @@ int influxdb_delete_cluster_admin(s_influxdb_client *client,
     return c;
 }
 
-char
+void
 *influxdb_cluster_admin_extractor(json_object *obj)
 {
     return influxdb_strdup(
@@ -81,6 +81,6 @@ size_t influxdb_get_cluster_admin_list(s_influxdb_client *client,
                                        char ***cluster_admin_list)
 {
     return influxdb_client_list_something(client, "/cluster_admins",
-                                          cluster_admin_list,
+                                          (void ***) cluster_admin_list,
                                           &influxdb_cluster_admin_extractor);
 }

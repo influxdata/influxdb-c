@@ -190,7 +190,7 @@ influxdb_client_post(s_influxdb_client *client,
 size_t
 influxdb_client_list_something(s_influxdb_client *client,
                                char *path,
-                               char ***db_list,
+                               void ***list,
                                influxdb_client_object_extract extractor)
 {
     json_object *jo = NULL;
@@ -201,12 +201,12 @@ influxdb_client_list_something(s_influxdb_client *client,
 
     len = json_object_array_length(jo);
 
-    if (db_list != NULL)
+    if (list != NULL)
     {
-        *db_list = malloc(sizeof (char *) * (len + 1));
+        *list = malloc(sizeof (char *) * (len + 1));
 
         for (i = 0; i < len; i++) {
-            (*db_list)[i] = extractor(json_object_array_get_idx(jo, i));
+            (*list)[i] = extractor(json_object_array_get_idx(jo, i));
         }
     }
 

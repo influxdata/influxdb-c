@@ -46,7 +46,7 @@ influxdb_delete_database(s_influxdb_client *client, char *database_name)
     return c;
 }
 
-char
+void
 *influxdb_database_extractor(json_object *obj)
 {
     return influxdb_strdup(
@@ -58,6 +58,7 @@ char
 size_t
 influxdb_get_database_list(s_influxdb_client *client, char ***databases_list)
 {
-    return influxdb_client_list_something(client, "/db", databases_list,
+    return influxdb_client_list_something(client, "/db",
+                                          (void ***) databases_list,
                                           &influxdb_database_extractor);
 }

@@ -35,7 +35,7 @@ s_influxdb_client *influxdb_client_new(char *host,
                                        char ssl);
 
 /**
- * Clean memory use by a client
+ * Clean memory used by a client
  */
 void influxdb_client_free(s_influxdb_client *client);
 
@@ -77,7 +77,7 @@ int influxdb_client_post(s_influxdb_client *client,
                          json_object       *body,
                          json_object       **res);
 
-typedef char *(*influxdb_client_object_extract)(json_object *obj);
+typedef void *(*influxdb_client_object_extract)(json_object *obj);
 
 /**
  * Return a list of elements
@@ -89,7 +89,7 @@ typedef char *(*influxdb_client_object_extract)(json_object *obj);
  */
 size_t influxdb_client_list_something(s_influxdb_client             *client,
                                      char                           *path,
-                                     char                           ***db_list,
+                                     void                           ***list,
                                      influxdb_client_object_extract extractor);
 
 #endif /* !CLIENT_H_ */
