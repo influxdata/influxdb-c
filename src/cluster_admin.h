@@ -34,10 +34,13 @@ int influxdb_create_cluster_admin(s_influxdb_client *client,
  */
 int influxdb_update_cluster_admin(s_influxdb_client *client,
                                   char              *name,
-                                  char              *password);
+                                  char              *newPassword);
+int influxdb_change_cluster_admin_password(s_influxdb_client *client,
+                                           char              *name,
+                                           char              *newPassword);
 
 /**
- * Remove a cluster admin password
+ * Remove a cluster admin
  *
  * \param client A initialized client
  * \param name The admin name

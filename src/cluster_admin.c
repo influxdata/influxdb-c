@@ -30,8 +30,7 @@ int influxdb_create_cluster_admin(s_influxdb_client *client,
 }
 
 int influxdb_update_cluster_admin(s_influxdb_client *client,
-                                  char *name,
-                                  char *password)
+                                  char *name, char *password)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];
@@ -47,6 +46,14 @@ int influxdb_update_cluster_admin(s_influxdb_client *client,
     json_object_put(jo);
 
     return c;
+}
+
+int
+influxdb_change_cluster_admin_password(s_influxdb_client *client,
+                                       char *name,
+                                       char *newPassword)
+{
+    return influxdb_update_cluster_admin(client, name, newPassword);
 }
 
 int influxdb_delete_cluster_admin(s_influxdb_client *client,
