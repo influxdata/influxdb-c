@@ -51,7 +51,13 @@ influxdb_client_get_url_with_credential(s_influxdb_client *client,
     strncat(*buffer, "://", size);
     strncat(*buffer, client->host, size);
     strncat(*buffer, path, size);
-    strncat(*buffer, "?u=", size);
+
+    if (strchr(path, '?'))
+        strncat(*buffer, "&", size);
+    else
+        strncat(*buffer, "?", size);
+
+    strncat(*buffer, "u=", size);
     strncat(*buffer, username_enc, size);
     strncat(*buffer, "&p=", size);
     strncat(*buffer, password_enc, size);
