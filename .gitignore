@@ -1,15 +1,31 @@
 # Temporary files
 *~
 .*.swp
+*.log
+
+# Autotools
+aclocal.m4
+autom4te.cache/
+build-aux/
+configure
+libtool
+Makefile
+Makefile.in
+m4/
+.deps/
+.libs/
+stamp-h1
 
 # Object files
 *.o
+*.lo
 *.ko
 *.obj
 *.elf
 
 # Libraries
 *.lib
+*.la
 *.a
 
 # Shared objects (inc. Windows DLLs)
