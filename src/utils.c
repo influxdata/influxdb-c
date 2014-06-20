@@ -15,10 +15,12 @@
 char
 *influxdb_strdup(const char *s)
 {
+    char *d;
+
     if (s == NULL)
         return NULL;
 
-    char *d = malloc(sizeof (char) * (strlen(s) + 1));
+    d = malloc(sizeof (char) * (strlen(s) + 1));
     if (d == NULL)
         return NULL;
 
