@@ -127,3 +127,54 @@ influxdb_query(s_influxdb_client *client,
 
     return c;
 }
+
+void
+*influxdb_continuous_queries_extractor(json_object *obj)
+{
+    s_influxdb_continuous_query *cq =
+        malloc(sizeof (s_influxdb_continuous_query));
+
+    cq->id = json_object_get_int(
+        json_object_object_get(obj, "id"));
+    cq->query = influxdb_strdup(json_object_get_string(
+        json_object_object_get(obj, "query")));
+
+    return cq;
+}
+
+size_t
+influxdb_get_continuous_queries(s_influxdb_client *client,
+                                s_influxdb_continuous_query ***response)
+{
+    char path[INFLUXDB_URL_MAX_SIZE];
+
+    path[0] = '\0';
+    strncat(path, "/db/", INFLUXDB_URL_MAX_SIZE);
+    strncat(path, client->database, INFLUXDB_URL_MAX_SIZE);
+    strncat(path, "/continuous_queries", INFLUXDB_URL_MAX_SIZE);
+
+    return influxdb_client_list_something(client, path, (void ***) response,
+                                       &influxdb_continuous_queries_extractor);
+}
+
+int
+influxdb_delete_continuous_query(s_influxdb_client *client,
+                                   int id)
+{
+    char path[INFLUXDB_URL_MAX_SIZE];
+
+    sprintf(path, "/db/%s/continuous_queries/%d", client->database, id);
+
+    return influxdb_client_delete(client, path, NULL);
+}
+
+
+void
+influxdb_continuous_query_free(s_influxdb_continuous_query *cq)
+{
+    if (cq != NULL)
+    {
+        free(cq->query);
+        free(cq);
+    }
+}

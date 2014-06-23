@@ -84,4 +84,34 @@ int influxdb_query(s_influxdb_client *client,
                    s_influxdb_series ***response,
                    size_t *response_size);
 
+typedef struct influxdb_continuous_queries {
+    int  id;
+    char *query;
+} s_influxdb_continuous_query;
+
+/**
+ * Retrive list of continuous queries
+ *
+ * \param client An initialized client
+ * \param response The continuous queries array to fill
+ * \return The size of the filled array
+ */
+size_t influxdb_get_continuous_queries(s_influxdb_client *client,
+                                      s_influxdb_continuous_query ***response);
+
+/**
+ * Send a delete request for a given module
+ *
+ * \param client A initialized client
+ * \param id The database to remove
+ * return HTTP status code or CURLcode (if < 100)
+ */
+int influxdb_delete_continuous_query(s_influxdb_client *client,
+                                     int id);
+
+/**
+ * Clean memory used by a continous query
+ */
+void influxdb_continuous_query_free(s_influxdb_continuous_query *cq);
+
 #endif /* !QUERY_H_ */
