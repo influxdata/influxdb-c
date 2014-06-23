@@ -28,7 +28,8 @@ void
 }
 
 size_t
-influxdb_servers(s_influxdb_client *client, s_influxdb_server ***servers_list)
+influxdb_servers_get(s_influxdb_client *client,
+                     s_influxdb_server ***servers_list)
 {
     return influxdb_client_list_something(client, "/cluster/servers",
                                           (void ***) servers_list,
@@ -36,7 +37,7 @@ influxdb_servers(s_influxdb_client *client, s_influxdb_server ***servers_list)
 }
 
 int
-influxdb_remove_servers(s_influxdb_client *client, unsigned int id)
+influxdb_server_remove(s_influxdb_client *client, unsigned int id)
 {
     char path[INFLUXDB_URL_MAX_SIZE];
 

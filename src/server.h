@@ -25,8 +25,8 @@ typedef struct influxdb_server {
  * \param servers_list The list to fill with server struct
  * \return The number of servers in the cluster
  */
-size_t influxdb_servers(s_influxdb_client *client,
-                        s_influxdb_server ***servers_list);
+size_t influxdb_servers_get(s_influxdb_client *client,
+                            s_influxdb_server ***servers_list);
 
 /**
  * Remove from cluster an existing server
@@ -35,7 +35,7 @@ size_t influxdb_servers(s_influxdb_client *client,
  * \param id The server identifier to remove
  * \return HTTP status code or CURLcode (if < 100)
  */
-int influxdb_remove_server(s_influxdb_client *client,
+int influxdb_server_remove(s_influxdb_client *client,
                            unsigned int      id);
 
 /**
