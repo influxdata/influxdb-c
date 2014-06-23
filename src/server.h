@@ -43,4 +43,9 @@ int influxdb_remove_server(s_influxdb_client *client,
  */
 void influxdb_server_free(s_influxdb_server *server);
 
+/**
+ * Ping the API
+ */
+int influxdb_ping(s_influxdb_client *client, char **status);
+
 #endif /* !SERVERS_H_ */

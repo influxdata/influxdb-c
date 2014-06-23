@@ -54,3 +54,20 @@ influxdb_server_free(s_influxdb_server *server)
         free(server);
     }
 }
+
+int
+influxdb_ping(s_influxdb_client *client, char **status)
+{
+    json_object *jo;
+    int res;
+
+    res = influxdb_client_get(client, "/ping", &jo);
+
+    if (status != NULL)
+        *status = influxdb_strdup(json_object_get_string(
+                                      json_object_object_get(jo, "status")));
+
+    json_object_put(jo);
+
+    return res;
+}
