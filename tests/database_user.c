@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 
+#include "../src/database.h"
 #include "../src/database_user.h"
 #include "tests.h"
 

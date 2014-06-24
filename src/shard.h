@@ -10,6 +10,7 @@
 #ifndef SHARD_H_
 # define SHARD_H_
 
+# include <stdint.h>
 # include "client.h"
 
 typedef struct influxdb_shard {

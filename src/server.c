@@ -7,7 +7,6 @@
  *
  */
 
-#include <json-c/json.h>
 #include <stdio.h>
 #include <string.h>
 

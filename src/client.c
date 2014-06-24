@@ -123,7 +123,7 @@ influxdb_client_curl(char *url,
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, response);
     if (body != NULL)
         curl_easy_setopt(handle, CURLOPT_POSTFIELDS,
-                         json_object_to_json_string_ext(body, 0));
+                         json_object_to_json_string(body));
 
     c = curl_easy_perform(handle);
 

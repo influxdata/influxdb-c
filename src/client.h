@@ -10,7 +10,15 @@
 #ifndef CLIENT_H_
 # define CLIENT_H_
 
-# include <json-c/json.h>
+# include <stdlib.h>
+
+# include "config.h"
+
+# ifdef HAVE_JSON_0
+#  include <json/json.h>
+# else
+#  include <json-c/json.h>
+# endif
 
 # define INFLUXDB_URL_MAX_SIZE 1024
 

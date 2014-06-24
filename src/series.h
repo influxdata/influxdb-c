@@ -11,7 +11,7 @@
 # define SERIES_H_
 
 # include <stddef.h>
-# include <json-c/json.h>
+# include "client.h"
 
 # define INFLUXDB_SERIES_STEP 64
 

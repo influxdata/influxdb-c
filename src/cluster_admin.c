@@ -7,7 +7,6 @@
  *
  */
 
-#include <json-c/json.h>
 #include <string.h>
 
 #include "cluster_admin.h"

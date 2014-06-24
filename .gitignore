@@ -13,6 +13,8 @@ libtool
 Makefile
 Makefile.in
 m4/
+src/config.h
+src/config.h.in
 .deps/
 .libs/
 stamp-h1

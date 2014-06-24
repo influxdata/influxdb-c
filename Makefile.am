@@ -6,6 +6,8 @@ MAINTAINERCLEANFILES = aclocal.m4 Makefile.in configure depcomp install-sh missi
 
 CLEANFILES = *~ \#* *.swp
 
+test: check
+
 doxygen.config: Makefile.in
 	echo "PROJECT_NAME          = libinfluxdb" > doxygen.config
 	echo "INPUT                 =  src/" >> doxygen.config

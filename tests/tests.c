@@ -32,14 +32,14 @@ main()
     {
         if (tests[i](client))
         {
-            printf("Test %d fails.\n", i + 1);
+            printf("Test %lu fails.\n", i + 1);
             fails++;
         }
     }
 
     influxdb_client_free(client);
 
-    printf("SUMARRY: %d tests executed, %d passed, %d failed",
+    printf("SUMARRY: %lu tests executed, %lu passed, %lu failed",
            i, i - fails, fails);
 
     return fails > 126 ? 126 : fails;

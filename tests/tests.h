@@ -10,6 +10,8 @@
 #ifndef TESTS_H_
 # define TESTS_H_
 
+# include <string.h>
+
 # include "../src/client.h"
 
 # define INFLUXDB_DATABASE_TEST "tests"

@@ -8,7 +8,6 @@
  */
 
 #include <curl/curl.h>
-#include <json-c/json.h>
 #include <string.h>
 
 #include "query.h"

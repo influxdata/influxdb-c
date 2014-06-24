@@ -7,7 +7,6 @@
  *
  */
 
-#include <json-c/json.h>
 #include <string.h>
 
 #include "database.h"

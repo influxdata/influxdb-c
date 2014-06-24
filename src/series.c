@@ -10,8 +10,6 @@
 #include "series.h"
 #include "utils.h"
 
-#include <stdlib.h>
-
 char
 *influxdb_series_get_name(s_influxdb_series *series)
 {
