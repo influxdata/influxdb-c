@@ -129,7 +129,7 @@ influxdb_client_curl(char *url,
 
     if (c == CURLE_OK)
     {
-        int status_code = 0;
+        long status_code = 0;
         if (curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE,
                               &status_code) == CURLE_OK)
             c = status_code;
