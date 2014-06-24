@@ -115,4 +115,10 @@ That will install the `libinfluxdb.so` into `/usr/local/lib/` and headers into `
 
 ## Documentation
 
-Header files are documented following doxygen rules.
+Generate documentation with:
+
+```sh
+make docs
+```
+
+Then, you will find HTML and LaTeX in `docs` directory.

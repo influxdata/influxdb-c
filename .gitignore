@@ -8,6 +8,7 @@ aclocal.m4
 autom4te.cache/
 build-aux/
 configure
+config.status
 libtool
 Makefile
 Makefile.in
@@ -15,6 +16,10 @@ m4/
 .deps/
 .libs/
 stamp-h1
+
+# Doxygen
+docs/
+doxygen.config
 
 # Object files
 *.o
