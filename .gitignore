@@ -1,0 +1,50 @@
+# Temporary files
+*~
+.*.swp
+*.log
+
+# Autotools
+aclocal.m4
+autom4te.cache/
+build-aux/
+configure
+config.status
+libtool
+Makefile
+Makefile.in
+m4/
+src/config.h
+src/config.h.in
+.deps/
+.libs/
+stamp-h1
+
+# Doxygen
+docs/
+doxygen.config
+
+# Object files
+*.o
+*.lo
+*.ko
+*.obj
+*.elf
+
+# Libraries
+*.lib
+*.la
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
