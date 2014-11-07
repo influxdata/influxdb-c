@@ -20,6 +20,18 @@ s_influxdb_client
                      char *database,
                      char ssl)
 {
+    return influxdb_client_new_with_timeout(host, username, password, database, ssl, 0, 0);
+}
+
+s_influxdb_client
+*influxdb_client_new_with_timeout(char *host,
+                     char *username,
+                     char *password,
+                     char *database,
+                     char ssl,
+		     int connection_timeout,
+                     int max_time)
+{
     s_influxdb_client *client = malloc(sizeof (s_influxdb_client));
 
     client->schema = ssl ? "https" : "http";
@@ -28,9 +40,13 @@ s_influxdb_client
     client->password = influxdb_strdup(password);
     client->database = curl_easy_escape(NULL, database, 0);
     client->ssl = ssl;
+    client->connection_timeout=connection_timeout;
+    client->max_time=max_time;
 
     return client;
+
 }
+
 
 /**
  * Forge real URL to the API using given client config and parameters
@@ -110,7 +126,9 @@ int
 influxdb_client_curl(char *url,
                      char *reqtype,
                      json_object *body,
-                     char **response)
+                     char **response,
+                     int connection_timeout,
+                     int max_time)
 {
     CURLcode c;
     CURL *handle = curl_easy_init();
@@ -121,6 +139,15 @@ influxdb_client_curl(char *url,
     curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION,
                      influxdb_client_write_data);
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, response);
+
+    if (connection_timeout>0)
+        curl_easy_setopt(handle, CURLOPT_CONNECTTIMEOUT,
+                     connection_timeout);
+
+    if (max_time>0)
+        curl_easy_setopt(handle, CURLOPT_TIMEOUT,
+                     max_time);
+
     if (body != NULL)
         curl_easy_setopt(handle, CURLOPT_POSTFIELDS,
                          json_object_to_json_string(body));
@@ -149,7 +176,7 @@ influxdb_client_delete(s_influxdb_client *client,
 
     influxdb_client_get_url(client, &url, INFLUXDB_URL_MAX_SIZE, path);
 
-    return influxdb_client_curl(url, "DELETE", body, NULL);
+    return influxdb_client_curl(url, "DELETE", body, NULL, client->connection_timeout, client->max_time);
 }
 
 int
@@ -161,7 +188,7 @@ influxdb_client_get(s_influxdb_client *client, char *path, json_object **res)
 
     influxdb_client_get_url(client, &url, INFLUXDB_URL_MAX_SIZE, path);
 
-    status = influxdb_client_curl(url, NULL, NULL, &buffer);
+    status = influxdb_client_curl(url, NULL, NULL, &buffer, client->connection_timeout, client->max_time);
 
     if (status >= 200 && status < 300 && res != NULL)
         *res = json_tokener_parse(buffer);
@@ -183,7 +210,7 @@ influxdb_client_post(s_influxdb_client *client,
 
     influxdb_client_get_url(client, &url, INFLUXDB_URL_MAX_SIZE, path);
 
-    status = influxdb_client_curl(url, NULL, body, &buffer);
+    status = influxdb_client_curl(url, NULL, body, &buffer, client->connection_timeout, client->max_time);
 
     if (status >= 200 && status < 300 && res != NULL)
         *res = json_tokener_parse(buffer);

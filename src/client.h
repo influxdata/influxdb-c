@@ -29,6 +29,8 @@ typedef struct influxdb_client {
     char *password;
     char *database;
     char ssl;
+    int connection_timeout;
+    int max_time;
 } s_influxdb_client;
 
 /**
@@ -41,6 +43,13 @@ s_influxdb_client *influxdb_client_new(char *host,
                                        char *password,
                                        char *database,
                                        char ssl);
+s_influxdb_client *influxdb_client_new_with_timeout(char *host,
+                                       char *username,
+                                       char *password,
+                                       char *database,
+                                       char ssl,
+                                       int connection_timeout,
+                                       int max_time);
 
 /**
  * Clean memory used by a client
