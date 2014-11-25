@@ -14,10 +14,10 @@
 #include "utils.h"
 
 s_influxdb_client
-*influxdb_client_new(char *host,
-                     char *username,
-                     char *password,
-                     char *database,
+*influxdb_client_new(const char *host,
+                     const char *username,
+                     const char *password,
+                     const char *database,
                      char ssl)
 {
     s_influxdb_client *client = malloc(sizeof (s_influxdb_client));
@@ -39,9 +39,9 @@ int
 influxdb_client_get_url_with_credential(s_influxdb_client *client,
                                         char (*buffer)[],
                                         size_t size,
-                                        char *path,
-                                        char *username,
-                                        char *password)
+                                        const char *path,
+                                        const char *username,
+                                        const char *password)
 {
     char *username_enc = curl_easy_escape(NULL, username, 0);
     char *password_enc = curl_easy_escape(NULL, password, 0);
@@ -107,8 +107,8 @@ influxdb_client_write_data(char *buf,
  * Low level function performing real HTTP request
  */
 int
-influxdb_client_curl(char *url,
-                     char *reqtype,
+influxdb_client_curl(const char *url,
+                     const char *reqtype,
                      json_object *body,
                      char **response)
 {
@@ -142,7 +142,7 @@ influxdb_client_curl(char *url,
 
 int
 influxdb_client_delete(s_influxdb_client *client,
-                       char *path,
+                       const char *path,
                        json_object *body)
 {
     char url[INFLUXDB_URL_MAX_SIZE];
@@ -153,7 +153,7 @@ influxdb_client_delete(s_influxdb_client *client,
 }
 
 int
-influxdb_client_get(s_influxdb_client *client, char *path, json_object **res)
+influxdb_client_get(s_influxdb_client *client, const char *path, json_object **res)
 {
     int status;
     char url[INFLUXDB_URL_MAX_SIZE];
@@ -173,7 +173,7 @@ influxdb_client_get(s_influxdb_client *client, char *path, json_object **res)
 
 int
 influxdb_client_post(s_influxdb_client *client,
-                     char *path,
+                     const char *path,
                      json_object *body,
                      json_object **res)
 {
@@ -195,7 +195,7 @@ influxdb_client_post(s_influxdb_client *client,
 
 size_t
 influxdb_client_list_something(s_influxdb_client *client,
-                               char *path,
+                               const char *path,
                                void ***list,
                                influxdb_client_object_extract extractor)
 {

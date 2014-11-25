@@ -13,9 +13,12 @@
 #include "utils.h"
 
 int
-influxdb_create_database_user(s_influxdb_client *client, char *database,
-                              char *name, char *password,
-                              char *r_perm, char *w_perm)
+influxdb_create_database_user(s_influxdb_client *client,
+                              const char *database,
+                              const char *name,
+                              const char *password,
+                              const char *r_perm,
+                              const char *w_perm)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];
@@ -38,9 +41,13 @@ influxdb_create_database_user(s_influxdb_client *client, char *database,
 }
 
 int
-influxdb_change_database_user_common(s_influxdb_client *client, char *database,
-                                   char *name, char *password, char isAdmin,
-                                   char *r_perm, char *w_perm)
+influxdb_change_database_user_common(s_influxdb_client *client,
+                                    const char *database,
+                                    const char *name,
+                                    const char *password,
+                                    char isAdmin,
+                                    const char *r_perm,
+                                    const char *w_perm)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];
@@ -68,9 +75,13 @@ influxdb_change_database_user_common(s_influxdb_client *client, char *database,
 }
 
 int
-influxdb_change_database_user(s_influxdb_client *client, char *database,
-                              char *name, char *newPassword, char isAdmin,
-                              char *new_r_perm, char *new_w_perm)
+influxdb_change_database_user(s_influxdb_client *client,
+                              const char *database,
+                              const char *name,
+                              const char *newPassword,
+                              char isAdmin,
+                              const char *new_r_perm,
+                              const char *new_w_perm)
 {
     return influxdb_change_database_user_common(client, database, name,
                                                 newPassword, isAdmin,
@@ -79,32 +90,40 @@ influxdb_change_database_user(s_influxdb_client *client, char *database,
 
 
 int
-influxdb_update_database_user(s_influxdb_client *client, char *database,
-                              char *name, char *password)
+influxdb_update_database_user(s_influxdb_client *client,
+                              const char *database,
+                              const char *name,
+                              const char *password)
 {
     return influxdb_change_database_user_common(client, database, name,
                                                 password, -1, NULL, NULL);
 }
 
 int influxdb_update_database_user_permissions(s_influxdb_client *client,
-                                              char *database, char *name,
-                                              char *r_perm, char *w_perm)
+                                              const char *database,
+                                              const char *name,
+                                              const char *r_perm,
+                                              const char *w_perm)
 {
     return influxdb_change_database_user_common(client, database, name,
                                                 NULL, -1, r_perm, w_perm);
 }
 
-int influxdb_alter_database_privilege(s_influxdb_client *client, char *database,
-                                      char *name, char isAdmin,
-                                      char *r_perm, char *w_perm)
+int influxdb_alter_database_privilege(s_influxdb_client *client,
+                                      const char *database,
+                                      const char *name,
+                                      char isAdmin,
+                                      const char *r_perm,
+                                      const char *w_perm)
 {
     return influxdb_change_database_user_common(client, database, name,
                                                 NULL, isAdmin, r_perm, w_perm);
 }
 
 int
-influxdb_delete_database_user(s_influxdb_client *client, char *database,
-                              char *name)
+influxdb_delete_database_user(s_influxdb_client *client,
+                              const char *database,
+                              const char *name)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];
@@ -135,7 +154,8 @@ void
 }
 
 size_t
-influxdb_get_database_user_list(s_influxdb_client *client, char *database,
+influxdb_get_database_user_list(s_influxdb_client *client,
+                                const char *database,
                                 char ***users_list)
 {
     char path[INFLUXDB_URL_MAX_SIZE];

@@ -20,7 +20,7 @@
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_create_database(s_influxdb_client *client,
-                             char              *database_name);
+                             const char        *database_name);
 
 /**
  * Delete an existing database
@@ -30,7 +30,7 @@ int influxdb_create_database(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_delete_database(s_influxdb_client *client,
-                             char              *database_name);
+                             const char        *database_name);
 
 /**
  * List existing databases
