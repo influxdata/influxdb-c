@@ -45,7 +45,7 @@ size_t influxdb_series_get_points(s_influxdb_series *series, char ****list);
 /**
  * Define the serie name
  */
-char influxdb_series_set_name(s_influxdb_series *series, char *name);
+char influxdb_series_set_name(s_influxdb_series *series, const char *name);
 
 /**
  * Define the columns list
@@ -57,7 +57,7 @@ char **influxdb_series_set_columns(s_influxdb_series *series,
 /**
  * Add a new column
  */
-char influxdb_series_add_colums(s_influxdb_series *series, char *name);
+char influxdb_series_add_colums(s_influxdb_series *series, const char *name);
 
 /**
  * Define the points matrix

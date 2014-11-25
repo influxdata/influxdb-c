@@ -36,10 +36,10 @@ typedef struct influxdb_client {
  *
  * \return An initialized client struct
  */
-s_influxdb_client *influxdb_client_new(char *host,
-                                       char *username,
-                                       char *password,
-                                       char *database,
+s_influxdb_client *influxdb_client_new(const char *host,
+                                       const char *username,
+                                       const char *password,
+                                       const char *database,
                                        char ssl);
 
 /**
@@ -56,7 +56,7 @@ void influxdb_client_free(s_influxdb_client *client);
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_client_delete(s_influxdb_client *client,
-                           char              *path,
+                           const char        *path,
                            json_object       *body);
 
 /**
@@ -68,7 +68,7 @@ int influxdb_client_delete(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_client_get(s_influxdb_client *client,
-                        char              *path,
+                        const char          *path,
                         json_object       **res);
 
 /**
@@ -81,7 +81,7 @@ int influxdb_client_get(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_client_post(s_influxdb_client *client,
-                         char              *path,
+                         const char        *path,
                          json_object       *body,
                          json_object       **res);
 
@@ -96,7 +96,7 @@ typedef void *(*influxdb_client_object_extract)(json_object *obj);
  * \return The list size
  */
 size_t influxdb_client_list_something(s_influxdb_client             *client,
-                                     char                           *path,
+                                     const char                     *path,
                                      void                           ***list,
                                      influxdb_client_object_extract extractor);
 

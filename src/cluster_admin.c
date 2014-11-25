@@ -13,8 +13,8 @@
 #include "utils.h"
 
 int influxdb_create_cluster_admin(s_influxdb_client *client,
-                                  char *name,
-                                  char *password)
+                                  const char *name,
+                                  const char *password)
 {
     int c;
     json_object *jo = json_object_new_object();
@@ -29,7 +29,8 @@ int influxdb_create_cluster_admin(s_influxdb_client *client,
 }
 
 int influxdb_update_cluster_admin(s_influxdb_client *client,
-                                  char *name, char *password)
+                                  const char *name,
+                                  const char *password)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];
@@ -49,14 +50,14 @@ int influxdb_update_cluster_admin(s_influxdb_client *client,
 
 int
 influxdb_change_cluster_admin_password(s_influxdb_client *client,
-                                       char *name,
-                                       char *newPassword)
+                                       const char *name,
+                                       const char *newPassword)
 {
     return influxdb_update_cluster_admin(client, name, newPassword);
 }
 
 int influxdb_delete_cluster_admin(s_influxdb_client *client,
-                                  char *name)
+                                  const char *name)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];

@@ -24,11 +24,11 @@
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_create_database_user(s_influxdb_client *client,
-                                  char              *database,
-                                  char              *name,
-                                  char              *password,
-                                  char              *r_perm,
-                                  char              *w_perm);
+                                  const char        *database,
+                                  const char        *name,
+                                  const char        *password,
+                                  const char        *r_perm,
+                                  const char        *w_perm);
 
 /**
  * Change the user password, adming flag and optionally permissions
@@ -39,12 +39,12 @@ int influxdb_create_database_user(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_change_database_user(s_influxdb_client *client,
-                                  char              *database,
-                                  char              *name,
-                                  char              *newPassword,
+                                  const char        *database,
+                                  const char        *name,
+                                  const char        *newPassword,
                                   char              isAdmin,
-                                  char              *new_r_perm,
-                                  char              *new_w_perm);
+                                  const char        *new_r_perm,
+                                  const char        *new_w_perm);
 
 /**
  * Update some user properties
@@ -55,9 +55,9 @@ int influxdb_change_database_user(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_update_database_user(s_influxdb_client *client,
-                                  char              *database,
-                                  char              *name,
-                                  char              *newPassword);
+                                  const char        *database,
+                                  const char        *name,
+                                  const char        *newPassword);
 
 /**
  * Update user permissions on database
@@ -70,10 +70,10 @@ int influxdb_update_database_user(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_update_database_user_permissions(s_influxdb_client *client,
-                                              char              *database,
-                                              char              *name,
-                                              char              *new_r_perm,
-                                              char              *new_w_perm);
+                                              const char        *database,
+                                              const char        *name,
+                                              const char        *new_r_perm,
+                                              const char        *new_w_perm);
 
 /**
  * Remove an user
@@ -83,8 +83,8 @@ int influxdb_update_database_user_permissions(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_delete_database_user(s_influxdb_client *client,
-                                  char              *database,
-                                  char              *name);
+                                  const char        *database,
+                                  const char        *name);
 
 /**
  * List existing users on database
@@ -95,7 +95,7 @@ int influxdb_delete_database_user(s_influxdb_client *client,
  * \return The number of users
  */
 size_t influxdb_get_database_user_list(s_influxdb_client *client,
-                                       char              *database,
+                                       const char        *database,
                                        char              ***users_list);
 
 /**
@@ -110,10 +110,10 @@ size_t influxdb_get_database_user_list(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_alter_database_privilege(s_influxdb_client *client,
-                                      char              *database,
-                                      char              *name,
+                                      const char        *database,
+                                      const char        *name,
                                       char              isAdmin,
-                                      char              *new_r_perm,
-                                      char              *new_w_perm);
+                                      const char        *new_r_perm,
+                                      const char        *new_w_perm);
 
 #endif /* !DATABASE_USER_H_ */

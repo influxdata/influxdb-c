@@ -13,7 +13,7 @@
 #include "utils.h"
 
 int
-influxdb_create_database(s_influxdb_client *client, char *database_name)
+influxdb_create_database(s_influxdb_client *client, const char *database_name)
 {
     int c;
     json_object *jo = json_object_new_object();
@@ -27,7 +27,7 @@ influxdb_create_database(s_influxdb_client *client, char *database_name)
 }
 
 int
-influxdb_delete_database(s_influxdb_client *client, char *database_name)
+influxdb_delete_database(s_influxdb_client *client, const char *database_name)
 {
     int c;
     char path[INFLUXDB_URL_MAX_SIZE];

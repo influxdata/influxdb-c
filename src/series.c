@@ -30,7 +30,7 @@ size_t influxdb_series_get_points(s_influxdb_series *series, char ****list)
 }
 
 char
-influxdb_series_set_name(s_influxdb_series *series, char *name)
+influxdb_series_set_name(s_influxdb_series *series, const char *name)
 {
     free(series->name);
     series->name = influxdb_strdup(name);
@@ -49,7 +49,7 @@ char
 }
 
 char
-influxdb_series_add_colums(s_influxdb_series *series, char *name)
+influxdb_series_add_colums(s_influxdb_series *series,const char *name)
 {
     if (series->columns_length == 0) {
         series->columns = malloc(sizeof (char *) * INFLUXDB_SERIES_STEP);
