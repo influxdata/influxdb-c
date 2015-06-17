@@ -1,6 +1,12 @@
 influxdb-c
 ==========
 
+# This library is not updated for InfluxDB 0.9.0. There are breaking changes to the API, use at your own risk.
+
+We encourage you to submit a pull request if you have a contribution.
+
+----------
+
 A C89 library to play with the REST API of an InfluxDB database.
 
 This implementation is meant as a C rewrite of the influxdb-go package.
