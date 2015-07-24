@@ -119,10 +119,10 @@ influxdb_query(s_influxdb_client *client,
     }
 
     c = influxdb_client_get(client, path, &jo);
-
-    *response_size = influxdb_series_from_json(jo, response);
-
-    json_object_put(jo);
+    if (c >= 200 && c < 300) {
+      *response_size = influxdb_series_from_json(jo, response);
+      json_object_put(jo);
+    }
 
     return c;
 }
