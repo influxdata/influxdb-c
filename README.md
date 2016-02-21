@@ -31,7 +31,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test1 test1.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test1 test1.c
 ./test1
 ```
 
@@ -60,7 +60,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test2 test2.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test2 test2.c
 ./test2
 ```
 
@@ -97,7 +97,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test3 test3.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test3 test3.c
 ./test3
 ```
 
