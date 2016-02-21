@@ -31,7 +31,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test1 test1.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test1 test1.c
 ./test1
 ```
 
@@ -60,7 +60,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test2 test2.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test2 test2.c
 ./test2
 ```
 
@@ -97,7 +97,7 @@ int main() {
 ```
 
 ```sh
-gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -o test3 test3.c
+gcc -I/usr/local/include/ -L/usr/local/lib -linfluxdb -lcurl -o test3 test3.c
 ./test3
 ```
 
@@ -108,6 +108,12 @@ Requirements:
 * Autotools & libtool;
 * [libcurl](http://libcurl.org/);
 * [libjson](https://github.com/json-c/json-c);
+
+With ubuntu, use `apt-get` to install these requirements:
+
+```sh
+apt-get install build-essential libtool autoconf libcurl4-gnutls-dev libjson-c-dev
+```
 
 Steps to build and install the library:
 ```sh
