@@ -109,6 +109,12 @@ Requirements:
 * [libcurl](http://libcurl.org/);
 * [libjson](https://github.com/json-c/json-c);
 
+With ubuntu, use `apt-get` to install these requirements:
+
+```sh
+apt-get install build-essential libtool autoconf libcurl4-gnutls-dev libjson-c-dev
+```
+
 Steps to build and install the library:
 ```sh
 ./bootstrap
