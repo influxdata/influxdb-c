@@ -21,8 +21,8 @@
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_create_cluster_admin(s_influxdb_client *client,
-                                  char              *name,
-                                  char              *password);
+                                  const char        *name,
+                                  const char        *password);
 
 /**
  * Update a cluster admin password
@@ -33,11 +33,11 @@ int influxdb_create_cluster_admin(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_update_cluster_admin(s_influxdb_client *client,
-                                  char              *name,
-                                  char              *newPassword);
+                                  const char        *name,
+                                  const char        *newPassword);
 int influxdb_change_cluster_admin_password(s_influxdb_client *client,
-                                           char              *name,
-                                           char              *newPassword);
+                                           const char        *name,
+                                           const char        *newPassword);
 
 /**
  * Remove a cluster admin
@@ -47,7 +47,7 @@ int influxdb_change_cluster_admin_password(s_influxdb_client *client,
  * \return HTTP status code or CURLcode (if < 100)
  */
 int influxdb_delete_cluster_admin(s_influxdb_client *client,
-                                  char              *name);
+                                  const char        *name);
 
 /**
  * List existing cluster admins
@@ -57,6 +57,6 @@ int influxdb_delete_cluster_admin(s_influxdb_client *client,
  * \return The number of cluster admins
  */
 size_t influxdb_get_cluster_admin_list(s_influxdb_client *client,
-                                       char             ***cluster_admin_list);
+                                       char        ***cluster_admin_list);
 
 #endif /* !CLUSTER_ADMIN_H_ */

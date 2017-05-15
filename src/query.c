@@ -83,7 +83,7 @@ influxdb_write_series_with_time_precision(s_influxdb_client *client,
 
 int
 influxdb_query(s_influxdb_client *client,
-               char *query,
+               const char *query,
                e_influxdb_time_precision time_precision,
                s_influxdb_series ***response,
                size_t *response_size)
